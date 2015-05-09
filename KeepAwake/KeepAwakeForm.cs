@@ -86,7 +86,7 @@ namespace KeepAwake
        /// <param name="e"></param>
        public void timer_Tick(object sender, EventArgs e)
         {
-            SendKeys.Send("{F15}");
+            KeepAwake.PressKey();
             // Blink
             pictureBox1.Image = Properties.Resources.Alien_sleep_icon_96x96;
             pictureBox1.Refresh();

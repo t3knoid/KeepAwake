@@ -37,6 +37,15 @@ namespace KeepAwake
             }
         }
 
+        public void PressKey() 
+        {
+
+            const int VK_F15 = 0x7E; // F15 key
+            const uint KEYEVENTF_EXTENDEDKEY = 0x0001;
+            
+            //Press the key          
+            NativeMethods.keybd_event((byte)VK_F15, 0, KEYEVENTF_EXTENDEDKEY | 0, 0);
+        }
     }
 
     internal static class NativeMethods
@@ -44,9 +53,8 @@ namespace KeepAwake
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         public static extern EXECUTION_STATE SetThreadExecutionState(EXECUTION_STATE esFlags);
 
-        [DllImport("user32.dll", SetLastError = true)]
-        public static extern UInt32 SendInput(UInt32 numberOfInputs, INPUT[] inputs, Int32 sizeOfInputStructure);
-
+        [DllImport("user32.dll")]
+        public static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, uint dwExtraInfo);
     }
     
     [FlagsAttribute]
