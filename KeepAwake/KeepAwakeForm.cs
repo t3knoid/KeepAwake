@@ -25,7 +25,16 @@ namespace KeepAwake
             tray_menu = new ContextMenu();
             tray_menu.MenuItems.Add(0, new MenuItem("Enable", new System.EventHandler(pictureBox1_Click)));
             tray_menu.MenuItems.Add(1, new MenuItem("Exit", new System.EventHandler(Exit_Click)));
+            tray_menu.MenuItems.Add(2, new MenuItem("-"));
+            tray_menu.MenuItems.Add(3, new MenuItem("About", new System.EventHandler(AboutBox_Load)));
             notifyIcon1.ContextMenu = tray_menu;
+        }
+        public String pictureBoxTag
+        {
+            get
+            {
+                return (String)pictureBox1.Tag;
+            }
         }
 
         protected void Exit_Click(Object sender, System.EventArgs e)
@@ -46,7 +55,6 @@ namespace KeepAwake
             {
                 pictureBox1.Image = Properties.Resources.Alien_sleep_icon_96x96;
                 pictureBox1.Tag = "Asleep";
-                //KeepAwakeForm.ActiveForm.Text = "Disabled";
                 KeepAwake.Disable();
                 timer.Enabled = false;                       // Enable the timer
                 timer.Stop();
@@ -61,7 +69,6 @@ namespace KeepAwake
             {
                 pictureBox1.Image = Properties.Resources.alien_awake_icon_96x96;
                 pictureBox1.Tag = "Awake";
-                //KeepAwakeForm.ActiveForm.Text = "Enabled";
                 notifyIcon1.BalloonTipTitle = "I'm keeping you up";
                 notifyIcon1.BalloonTipText = "I'm keeping you up";
                 this.notifyIcon1.Text = "Awake";
@@ -126,5 +133,12 @@ namespace KeepAwake
            this.Show();
            this.WindowState = FormWindowState.Normal;
        }
+
+       private void AboutBox_Load(object sender, EventArgs e)
+       {
+           AboutBox about = new AboutBox(this);
+           about.Show();
+       }
+
     }
 }
