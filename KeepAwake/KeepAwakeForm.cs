@@ -18,10 +18,11 @@ namespace KeepAwake
         public bool SupportCitrixClient = false;
 
         // Tray icon menu
-        private ContextMenu tray_menu;  
+        private ContextMenu tray_menu;
 
         public KeepAwakeForm()
         {
+            
             InitializeComponent();
             tray_menu = new ContextMenu();
             tray_menu.MenuItems.Add(0, new MenuItem("Enable", new System.EventHandler(pictureBox1_Click)));
@@ -77,10 +78,10 @@ namespace KeepAwake
                 KeepAwake.Disable();
                 timer.Enabled = false;                       // Enable the timer
                 timer.Stop();
-                toolTip1.SetToolTip(this.pictureBox1, "Zzzzz...Click on me to stay up");
-                notifyIcon1.BalloonTipTitle = "Zzzzz...Click on me to stay up";
-                notifyIcon1.BalloonTipText = "Zzzzz...Click on me to stay up";
-                this.notifyIcon1.Text = "Zzzzz...sleeping";
+                toolTip1.SetToolTip(this.pictureBox1, Properties.Resources.String1);
+                notifyIcon1.BalloonTipTitle = Properties.Resources.String1;
+                notifyIcon1.BalloonTipText = Properties.Resources.String1;
+                this.notifyIcon1.Text = Properties.Resources.String1; 
                 notifyIcon1.Icon = Properties.Resources.alien_sleep_icon_32x32;
                 tray_menu.MenuItems[0].Checked = false;
                 tray_menu.MenuItems[1].Enabled = false;
@@ -89,8 +90,8 @@ namespace KeepAwake
             {
                 pictureBox1.Image = Properties.Resources.alien_awake_icon_96x96;
                 pictureBox1.Tag = "Awake";
-                notifyIcon1.BalloonTipTitle = "I'm keeping you up";
-                notifyIcon1.BalloonTipText = "I'm keeping you up";
+                notifyIcon1.BalloonTipTitle = Properties.Resources.String4;
+                notifyIcon1.BalloonTipText = Properties.Resources.String4; 
                 this.notifyIcon1.Text = "Awake";
                 tray_menu.MenuItems[0].Checked = true;
                 tray_menu.MenuItems[1].Enabled = true;
@@ -100,8 +101,8 @@ namespace KeepAwake
                 timer.Tick += new EventHandler(timer_Tick); // Everytime timer ticks, timer_Tick will be called
                 timer.Interval = (1000) * (30);             // Timer will tick every 30 seconds
                 timer.Enabled = true;                       // Enable the timer
-                timer.Start();   
-                toolTip1.SetToolTip(pictureBox1, "I'm keeping you up");                
+                timer.Start();
+                toolTip1.SetToolTip(pictureBox1, Properties.Resources.String4);
             }
             
             pictureBox1.Refresh();
