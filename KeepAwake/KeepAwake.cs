@@ -5,6 +5,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace KeepAwake
 {
@@ -46,6 +47,17 @@ namespace KeepAwake
             //Press the key          
             NativeMethods.keybd_event((byte)VK_F15, 0, KEYEVENTF_EXTENDEDKEY | 0, 0);
         }
+
+        public void sendKeyToCitrix()
+        {
+            Process p = Process.GetProcessesByName("wfica32").FirstOrDefault();
+            if (p != null)
+            {
+                IntPtr h = p.MainWindowHandle;
+                NativeMethods.SetForegroundWindow(h);
+                PressKey();
+            }
+        }
     }
 
     internal static class NativeMethods
@@ -55,6 +67,9 @@ namespace KeepAwake
 
         [DllImport("user32.dll")]
         public static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, uint dwExtraInfo);
+        
+        [DllImport("user32.dll")]
+        public static extern int SetForegroundWindow(IntPtr point);
     }
     
     [FlagsAttribute]

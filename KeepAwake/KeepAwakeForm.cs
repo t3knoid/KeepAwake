@@ -15,6 +15,7 @@ namespace KeepAwake
     {
         KeepAwake KeepAwake = new KeepAwake();
         public UITimer timer;
+        public bool SupportCitrixClient = false;
 
         // Tray icon menu
         private ContextMenu tray_menu;  
@@ -24,10 +25,27 @@ namespace KeepAwake
             InitializeComponent();
             tray_menu = new ContextMenu();
             tray_menu.MenuItems.Add(0, new MenuItem("Enable", new System.EventHandler(pictureBox1_Click)));
-            tray_menu.MenuItems.Add(1, new MenuItem("Exit", new System.EventHandler(Exit_Click)));
-            tray_menu.MenuItems.Add(2, new MenuItem("-"));
-            tray_menu.MenuItems.Add(3, new MenuItem("About", new System.EventHandler(AboutBox_Load)));
+            tray_menu.MenuItems.Add(1, new MenuItem("Citrix Client", new System.EventHandler(citrixClient_Click)));
+            tray_menu.MenuItems[1].Enabled = false;
+            tray_menu.MenuItems.Add(2, new MenuItem("Exit", new System.EventHandler(Exit_Click)));
+            tray_menu.MenuItems.Add(3, new MenuItem("-"));
+            tray_menu.MenuItems.Add(4, new MenuItem("About", new System.EventHandler(AboutBox_Load)));
             notifyIcon1.ContextMenu = tray_menu;
+        }
+
+        private void citrixClient_Click(object sender, EventArgs e)
+        {
+            if (tray_menu.MenuItems[1].Checked == true)
+            {
+                SupportCitrixClient = false;
+                tray_menu.MenuItems[1].Checked = false;
+            }
+            else
+            {
+                SupportCitrixClient = true;
+                tray_menu.MenuItems[1].Checked = true;
+            }
+            
         }
         public String pictureBoxTag
         {
@@ -49,6 +67,7 @@ namespace KeepAwake
         {
             Show();
         }
+
        private void pictureBox1_Click(object sender, EventArgs e)
         {
             if ((String)pictureBox1.Tag == "Awake")
@@ -64,6 +83,7 @@ namespace KeepAwake
                 this.notifyIcon1.Text = "Zzzzz...sleeping";
                 notifyIcon1.Icon = Properties.Resources.alien_sleep_icon_32x32;
                 tray_menu.MenuItems[0].Checked = false;
+                tray_menu.MenuItems[1].Enabled = false;
               }
             else // Wake up
             {
@@ -73,6 +93,7 @@ namespace KeepAwake
                 notifyIcon1.BalloonTipText = "I'm keeping you up";
                 this.notifyIcon1.Text = "Awake";
                 tray_menu.MenuItems[0].Checked = true;
+                tray_menu.MenuItems[1].Enabled = true;
                 notifyIcon1.Icon = Properties.Resources.alien_awake_icon_32x32;
                 KeepAwake.Enable();
                 timer = new UITimer();
@@ -94,6 +115,11 @@ namespace KeepAwake
        public void timer_Tick(object sender, EventArgs e)
         {
             KeepAwake.PressKey();
+            if (SupportCitrixClient)
+            {
+                KeepAwake.sendKeyToCitrix();
+            }
+            
             // Blink
             pictureBox1.Image = Properties.Resources.Alien_sleep_icon_96x96;
             pictureBox1.Refresh();
@@ -128,7 +154,21 @@ namespace KeepAwake
                notifyIcon1.Visible = false;
            }
        }
-       private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+
+       private void notifyIcon1_Resize(object sender, EventArgs e)
+       {
+           if (FormWindowState.Minimized == this.WindowState)
+           {
+               notifyIcon1.Visible = true;
+               notifyIcon1.ShowBalloonTip(500);
+               this.Hide();
+           }
+           else if (FormWindowState.Normal == this.WindowState)
+           {
+               //notifyIcon1.Visible = false;
+           }
+       }
+       private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
        {
            this.Show();
            this.WindowState = FormWindowState.Normal;
