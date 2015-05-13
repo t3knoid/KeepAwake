@@ -13,20 +13,22 @@ namespace KeepAwake
         KeepAwakeForm keepAwakeForm;
         public AboutBox(KeepAwakeForm mainForm)
         {
-            InitializeComponent();
             keepAwakeForm = mainForm;
-            this.Text = String.Format("About {0}", AssemblyTitle);
-            this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
-            this.labelCopyright.Text = AssemblyCopyright;
-            if (keepAwakeForm.pictureBoxTag == "Awake")
+            InitializeComponent();
+            if (this.keepAwakeForm.pictureBoxTag == "Awake")
             {
-                logoPictureBox.Image = Properties.Resources.alien_awake_icon_96x96;
+                this.logoPictureBox.Image = Properties.Resources.alien_awake_icon_96x96;
+                this.Icon = Properties.Resources.alien_awake_icon_32x32;
             }
             else // Wake up
             {
-                logoPictureBox.Image = Properties.Resources.Alien_sleep_icon_96x96;
+                this.logoPictureBox.Image = Properties.Resources.Alien_sleep_icon_96x96;
+                this.Icon = Properties.Resources.alien_sleep_icon_32x32;
             }
+
+            this.labelProductName.Text = AssemblyProduct;
+            this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
+            this.labelCopyright.Text = AssemblyCopyright;
         }
 
         #region Assembly Attribute Accessors

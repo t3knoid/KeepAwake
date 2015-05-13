@@ -27,7 +27,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutBox));
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.labelProductName = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
@@ -38,7 +37,7 @@
             // 
             // logoPictureBox
             // 
-            this.logoPictureBox.Image = global::KeepAwake.Properties.Resources.Alien_sleep_icon_96x96;
+            this.logoPictureBox.Image = Properties.Resources.Alien_sleep_icon_96x96;
             this.logoPictureBox.Location = new System.Drawing.Point(12, 12);
             this.logoPictureBox.Name = "logoPictureBox";
             this.logoPictureBox.Size = new System.Drawing.Size(96, 103);
@@ -71,11 +70,20 @@
             this.labelCopyright.TabIndex = 3;
             this.labelCopyright.Text = "Copyright";
             // 
+            // okButton
+            // 
+            this.okButton.Location = new System.Drawing.Point(168, 80);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(75, 23);
+            this.okButton.TabIndex = 0;
+            this.okButton.Text = "&OK";
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            // 
             // AboutBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 119);
+            this.ClientSize = new System.Drawing.Size(299, 115);
             this.ControlBox = false;
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.labelVersion);
@@ -83,7 +91,6 @@
             this.Controls.Add(this.labelCopyright);
             this.Controls.Add(this.logoPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AboutBox";

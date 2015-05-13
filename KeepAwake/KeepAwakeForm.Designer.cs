@@ -15,6 +15,7 @@
         {
             if (disposing && (components != null))
             {
+                this.notifyIcon1.Dispose(); // Extra measure  to remove tray icon
                 components.Dispose();
             }
             base.Dispose(disposing);
