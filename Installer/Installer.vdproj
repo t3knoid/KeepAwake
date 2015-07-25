@@ -11,6 +11,7 @@
 "SccLocalPath" = "8:"
 "SccAuxPath" = "8:"
 "SccProvider" = "8:"
+"BackwardsCompatibleGUIDGeneration" = "8:TRUE"
     "Hierarchy"
     {
         "Entry"
@@ -43,6 +44,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -53,7 +62,7 @@
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
-        "Compression" = "3:2"
+        "Compression" = "3:3"
         "SignOutput" = "11:FALSE"
         "CertificateFile" = "8:"
         "PrivateKeyFile" = "8:"
@@ -68,10 +77,10 @@
             "ComponentsUrl" = "8:"
                 "Items"
                 {
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Client.3.5"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.3.5.SP1"
                     {
-                    "Name" = "8:.NET Framework 3.5 SP1 Client Profile"
-                    "ProductCode" = "8:Microsoft.Net.Client.3.5"
+                    "Name" = "8:.NET Framework 3.5 SP1"
+                    "ProductCode" = "8:Microsoft.Net.Framework.3.5.SP1"
                     }
                 }
             }
@@ -94,11 +103,11 @@
             {
                 "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_38848CFA20984F108CE026FAE4D7912F"
                 {
-                "Name" = "8:.NET Framework"
+                "Name" = "8:.NET Framework 3.5"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.5"
+                "FrameworkVersion" = "8:.NETFramework,Version=v3.5"
                 "AllowLaterVersions" = "11:FALSE"
-                "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=395269"
+                "InstallUrl" = "8:go.microsoft.com/?linkid=7755937"
                 }
             }
         }
@@ -172,20 +181,20 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:KeepAwake"
         "ProductCode" = "8:{22DB5016-BF84-4170-8BF1-7EB440154047}"
-        "PackageCode" = "8:{9E97A9E9-0322-4EE9-9268-A10410321AE5}"
+        "PackageCode" = "8:{1568DBD4-A0EF-4650-B108-B6FDF3E84881}"
         "UpgradeCode" = "8:{80180351-00FD-4CA9-88DF-282A6BD931AC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Francis Refol"
+        "ProductVersion" = "8:0.5"
+        "Manufacturer" = "8:Frank Refol"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
-        "Title" = "8:Installer"
+        "ARPHELPLINK" = "8:https://github.com/t3knoid/KeepAwake/issues"
+        "Title" = "8:KeepAwake"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Francis Refol"
+        "ARPCONTACT" = "8:Frank Refol"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:Keeps your machine awake."
         "ARPURLINFOABOUT" = "8:"
