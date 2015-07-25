@@ -38,15 +38,15 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = Properties.Resources.Alien_sleep_icon_96x96;
+            this.pictureBox1.Image = global::KeepAwake.Properties.Resources.Alien_sleep_icon_96x96;
             this.pictureBox1.Location = new System.Drawing.Point(13, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(96, 96);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Tag = "Asleep";
-            this.toolTip1.SetToolTip(this.pictureBox1, Properties.Resources.String1);
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.toolTip1.SetToolTip(this.pictureBox1, global::KeepAwake.Properties.Resources.String1);
+            this.pictureBox1.DoubleClick += new System.EventHandler(this.pictureBox1_Click);
             // 
             // toolTip1
             // 
@@ -54,9 +54,9 @@
             // 
             // notifyIcon1
             // 
-            this.notifyIcon1.BalloonTipText = Properties.Resources.String3;
-            this.notifyIcon1.Icon = Properties.Resources.alien_sleep_icon_32x32;
-            this.notifyIcon1.Text = Properties.Resources.String2;
+            this.notifyIcon1.BalloonTipText = global::KeepAwake.Properties.Resources.String3;
+            this.notifyIcon1.Icon = global::KeepAwake.Properties.Resources.alien_sleep_icon_32x32;
+            this.notifyIcon1.Text = global::KeepAwake.Properties.Resources.String2;
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_Click);
@@ -66,9 +66,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(119, 119);
+            this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = Properties.Resources.alien_awake_icon_32x32;
+            this.Icon = global::KeepAwake.Properties.Resources.alien_awake_icon_32x32;
             this.MaximizeBox = false;
             this.Name = "KeepAwakeForm";
             this.Text = "KeepAwake";
