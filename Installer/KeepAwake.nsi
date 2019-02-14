@@ -5,7 +5,20 @@
 !define NAME "Keep Awake"
 !define COMPANYNAME "Frank Refol"
 !define DESCRIPTION "KeepAwake is a simple C# application that keeps windows session from sleeping."
+
+# These three must be integers
+!define VERSIONMAJOR 1
+!define VERSIONMINOR 0
+!define VERSIONBUILD 0
+
+# These will be displayed by the "Click here for support information" link in "Add/Remove Programs"
+# It is possible to use "mailto:" links in here to open the email client
 !define HELPURL "https://github.com/t3knoid/KeepAwake/issues"
+!define UPDATEURL "https://github.com/t3knoid/KeepAwake/releases" # "Product Updates" link
+!define ABOUTURL "http://..." # "Publisher" link
+# This is the size (in kB) of all the files copied into "Program Files"
+!define INSTALLSIZE 7233
+
 OutFile "KeepAwake_setup.exe"
 Caption "$(^Name)"
  
@@ -106,17 +119,17 @@ Section "Installation"
 	
 	# Add add/remove entry
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${NAME}" \
-		"DisplayName" "Keep Awake"
+		"DisplayName" "${NAME}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${NAME}" \
 		"UninstallString" "$\"$INSTDIR\uninstall.exe$\""
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${NAME}" \
-		"DisplayIcon" "$\"$INSTDIR\KeepAwake.exe$\""		
+		"DisplayIcon" "$INSTDIR\KeepAwake.exe"		
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${NAME}" \
-		"Publisher" \"${COMPANYNAME}$\""		
+		"Publisher" "${COMPANYNAME}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${NAME}" \
-		"HelpLink" "$\"${HELPURL}$\""		
+		"HelpLink" "${HELPURL}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${NAME}" \
-		"DisplayVersion" "$\"${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}$\""
+		"DisplayVersion" "${VERSIONMAJOR}.${VERSIONMINOR}.${VERSIONBUILD}"
  
 SectionEnd
 
@@ -140,14 +153,11 @@ Section "uninstall"
     Delete "$SMPROGRAMS\Keep Awake\Keep Awake.lnk"
 	RMDir "$SMPROGRAMS\Keep Awake"
 	
-	# third, delete all files
-	Delete "$APPDATA\\Keep Awake\\config.yml"
-	
 	# fourth, delete installation folder
 	RMDir /r  "$INSTDIR"
 	
 	# Remove add/remove registry entry
-	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
+	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\$(NAME)"
  
 # uninstaller section end
 SectionEnd
