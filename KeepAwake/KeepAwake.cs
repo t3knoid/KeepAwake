@@ -57,6 +57,14 @@ namespace KeepAwake
                 NativeMethods.SetForegroundWindow(h);
                 PressKey();
             }
+            p = Process.GetProcessesByName("CDViewer").FirstOrDefault();
+            if (p != null)
+            {
+                IntPtr h = p.MainWindowHandle;
+                NativeMethods.SetForegroundWindow(h);
+                PressKey();
+            }
+
         }
     }
 
