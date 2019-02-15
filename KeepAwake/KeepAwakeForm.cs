@@ -146,10 +146,12 @@ namespace KeepAwake
        private void Blink()
        {
            // Blink
+           notifyIcon1.Icon = global::KeepAwake.Properties.Resources.alien_sleep_icon_32x32;
            pictureBox1.Image = Properties.Resources.Alien_sleep_icon_96x96;
            pictureBox1.Refresh();
            Thread.Sleep(500);
            pictureBox1.Image = Properties.Resources.alien_awake_icon_96x96;
+           notifyIcon1.Icon = global::KeepAwake.Properties.Resources.alien_awake_icon_32x32;
            pictureBox1.Refresh();
        }
 
