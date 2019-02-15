@@ -50,12 +50,14 @@ namespace KeepAwake
 
         public void sendKeyToCitrix()
         {
+            IntPtr currentProcess = NativeMethods.GetForegroundWindow(); // Save current window
             Process p = Process.GetProcessesByName("wfica32").FirstOrDefault();
             if (p != null)
             {
                 IntPtr h = p.MainWindowHandle;
                 NativeMethods.SetForegroundWindow(h);
                 PressKey();
+                NativeMethods.SetForegroundWindow(currentProcess); // Restore window
             }
             p = Process.GetProcessesByName("CDViewer").FirstOrDefault();
             if (p != null)
@@ -63,6 +65,7 @@ namespace KeepAwake
                 IntPtr h = p.MainWindowHandle;
                 NativeMethods.SetForegroundWindow(h);
                 PressKey();
+                NativeMethods.SetForegroundWindow(currentProcess); // Restore window
             }
 
         }
@@ -78,6 +81,9 @@ namespace KeepAwake
         
         [DllImport("user32.dll")]
         public static extern int SetForegroundWindow(IntPtr point);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetForegroundWindow();
     }
     
     [FlagsAttribute]
