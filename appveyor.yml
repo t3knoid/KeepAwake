@@ -1,0 +1,14 @@
+version: 1.0.0.{build}
+configuration: Release
+platform: Any CPU
+build:
+  project: KeepAwake.sln
+  verbosity: normal
+after_build:
+- cmd: '"packages\NSIS.2.51\tools\makensis.exe" "installer\KeepAwake.nsi"'
+artifacts:
+- path: Installer\KeepAwake_setup.exe
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: 6yCn2mYm5XCoXONMKIAw3+XYupDAanZ8LwRB5aTb0nUr6wdv4mOW53+AjEgz/bNdVzfxi6VJj64Gog0hKZJCgBbG5VymHToGqZ7y1UJsS00=
