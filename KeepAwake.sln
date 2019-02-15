@@ -5,6 +5,16 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeepAwake", "KeepAwake\KeepAwake.csproj", "{150AFA8E-20EE-4CB4-91C8-3D87B050B92F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{95DB0AB9-4529-425E-99D7-F62EF6F04A64}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installer", "Installer", "{B6F92062-9DFA-4EB3-A146-BE71D5C485B8}"
+	ProjectSection(SolutionItems) = preProject
+		Installer\KeepAwake.nsi = Installer\KeepAwake.nsi
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
