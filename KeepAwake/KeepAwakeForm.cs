@@ -28,22 +28,41 @@ namespace KeepAwake
             tray_menu = new ContextMenu();
             tray_menu.MenuItems.Add(0, new MenuItem("Enable", new System.EventHandler(pictureBox1_Click)));
             tray_menu.MenuItems.Add(1, new MenuItem("Citrix Client", new System.EventHandler(citrixClient_Click)));
+            tray_menu.MenuItems.Add(2, new MenuItem("Keep on top", new System.EventHandler(keeponTop_Click)));
             tray_menu.MenuItems[1].Enabled = false;
-            tray_menu.MenuItems.Add(2, new MenuItem("Minimize", new System.EventHandler(MinimizeFromTray)));
-            tray_menu.MenuItems.Add(3, new MenuItem("Exit", new System.EventHandler(Exit_Click)));
-            tray_menu.MenuItems.Add(4, new MenuItem("-"));
-            tray_menu.MenuItems.Add(5, new MenuItem("About", new System.EventHandler(AboutBox_Load)));
+            tray_menu.MenuItems.Add(3, new MenuItem("Minimize", new System.EventHandler(MinimizeFromTray)));
+            tray_menu.MenuItems.Add(4, new MenuItem("Exit", new System.EventHandler(Exit_Click)));
+            tray_menu.MenuItems.Add(5, new MenuItem("-"));
+            tray_menu.MenuItems.Add(6, new MenuItem("About", new System.EventHandler(AboutBox_Load)));
             notifyIcon1.ContextMenu = tray_menu;
 
             picture_menu = new ContextMenu();
             picture_menu.MenuItems.Add(0, new MenuItem("Enable", new System.EventHandler(pictureBox1_Click)));
             picture_menu.MenuItems.Add(1, new MenuItem("Citrix Client", new System.EventHandler(citrixClient_Click)));
-            tray_menu.MenuItems[1].Enabled = false;
-            picture_menu.MenuItems.Add(2, new MenuItem("Minimize", new System.EventHandler(MinimizeFromTray)));
-            picture_menu.MenuItems.Add(3, new MenuItem("Exit", new System.EventHandler(Exit_Click)));
-            picture_menu.MenuItems.Add(4, new MenuItem("-"));
-            picture_menu.MenuItems.Add(5, new MenuItem("About", new System.EventHandler(AboutBox_Load)));
+            picture_menu.MenuItems.Add(2, new MenuItem("Keep on top", new System.EventHandler(keeponTop_Click)));
+            picture_menu.MenuItems[1].Enabled = false;
+            picture_menu.MenuItems.Add(3, new MenuItem("Minimize", new System.EventHandler(MinimizeFromTray)));
+            picture_menu.MenuItems.Add(4, new MenuItem("Exit", new System.EventHandler(Exit_Click)));
+            picture_menu.MenuItems.Add(5, new MenuItem("-"));
+            picture_menu.MenuItems.Add(6, new MenuItem("About", new System.EventHandler(AboutBox_Load)));
             pictureBox1.ContextMenu = picture_menu;
+        }
+
+        private void keeponTop_Click(object sender, EventArgs e)
+        {
+            if (TopMost == true)
+            {
+                TopMost = false;
+                tray_menu.MenuItems[2].Checked = false;
+                picture_menu.MenuItems[2].Checked = false;  
+            }
+            else
+            {
+                TopMost = true;
+                tray_menu.MenuItems[2].Checked = true;
+                picture_menu.MenuItems[2].Checked = true;  
+
+            }
         }
 
         private void citrixClient_Click(object sender, EventArgs e)
@@ -52,8 +71,7 @@ namespace KeepAwake
             {
                 SupportCitrixClient = false;
                 tray_menu.MenuItems[1].Checked = false;
-                picture_menu.MenuItems[1].Checked = false;
-                
+                picture_menu.MenuItems[1].Checked = false;                
             }
             else
             {
