@@ -139,14 +139,19 @@ namespace KeepAwake
             {
                 KeepAwake.sendKeyToCitrix();
             }
-            
-            // Blink
-            pictureBox1.Image = Properties.Resources.Alien_sleep_icon_96x96;
-            pictureBox1.Refresh();
-            Thread.Sleep(500);
-            pictureBox1.Image = Properties.Resources.alien_awake_icon_96x96;
-            pictureBox1.Refresh();
+
+            Blink();
         }
+
+       private void Blink()
+       {
+           // Blink
+           pictureBox1.Image = Properties.Resources.Alien_sleep_icon_96x96;
+           pictureBox1.Refresh();
+           Thread.Sleep(500);
+           pictureBox1.Image = Properties.Resources.alien_awake_icon_96x96;
+           pictureBox1.Refresh();
+       }
 
        private void KeepAwakeForm_FormClosed(object sender, EventArgs e)
        {
