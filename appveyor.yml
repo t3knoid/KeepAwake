@@ -12,3 +12,4 @@ deploy:
 - provider: GitHub
   auth_token:
     secure: gX7uENpEovQdzscLdFEkic6eRFdekgL5T9Uuo/XIGwq7PSTFqnrka1xi+FTDDnYv
+  prerelease: true
