@@ -22,9 +22,6 @@
 OutFile "KeepAwake_setup.exe"
 Caption "$(^Name)"
  
-# define installation directory
-InstallDir "$PROGRAMFILES64\Keep Awake"
- 
 # For removing Start Menu shortcut in Windows 7
 RequestExecutionLevel admin
  
@@ -83,6 +80,9 @@ RequestExecutionLevel admin
 !macroend
 
 Function .onInit
+    SetShellVarContext All ; Define ProgramData
+    # define installation directory
+    strCpy $INSTDIR "$APPDATA\Keep Awake"
 	DetailPrint "Checking if ${NAME} is installed."
 	ReadRegStr $R0 HKLM "SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\${NAME}" "UninstallString"
 	DetailPrint "Uninstall string read is $R0"
@@ -134,7 +134,6 @@ Section "Installation"
 SectionEnd
 
 Section "Start Menu Shortcuts"
-
 	CreateDirectory "$SMPROGRAMS\Keep Awake"
 	CreateShortCut "$SMPROGRAMS\Keep Awake\Keep Awake.lnk" "$INSTDIR\KeepAwake.exe"
     CreateShortCut "$SMPROGRAMS\Keep Awake\Uninstall.lnk" "$INSTDIR\uninstall.exe"
