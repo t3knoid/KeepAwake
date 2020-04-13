@@ -40,12 +40,13 @@ namespace KeepAwake
 
         public void PressKey() 
         {
+            const int VK_NumLock = 0x90; // Numlock key
+            const uint KEYEVENTF_EXTENDEDKEY = 0;
+            const uint KEYEVENTF_KEYUP = 2;
 
-            const int VK_F15 = 0x7E; // F15 key
-            const uint KEYEVENTF_EXTENDEDKEY = 0x0001;
-            
             //Press the key          
-            NativeMethods.keybd_event((byte)VK_F15, 0, KEYEVENTF_EXTENDEDKEY | 0, 0);
+            NativeMethods.keybd_event((byte)VK_NumLock, 0x45, KEYEVENTF_EXTENDEDKEY | 0, 0);
+            NativeMethods.keybd_event((byte)VK_NumLock, 0x45, KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
         }
 
         public void sendKeyToCitrix()
